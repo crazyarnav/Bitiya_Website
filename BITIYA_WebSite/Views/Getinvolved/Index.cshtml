@@ -1,0 +1,239 @@
+﻿@model BITIYA_WebSite.Models.Person
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var msg = ViewBag.Msg;
+    if (IsPost)
+    {
+        if (ViewBag.ErrMsg != string.Empty)
+        {
+            msg = ViewBag.ErrMsg;
+        }
+        else
+        {
+            msg = ViewBag.Msg;
+            
+        }
+    }
+    
+}
+
+
+@using (Html.BeginForm())
+{ 
+    <table id="infoTable">
+        <tr>
+            <th class="info_col1"></th>
+            <th class="info_col2"></th>
+            <th class="info_col3"></th>
+            <th class="info_col4"></th>
+            <th class="info_col5"></th>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td colspan=4;  style="margin-left: 10px; font-family: Tahoma; font-size: medium; color: Green;">
+                @msg
+            </td>
+        </tr>
+
+        <tr><td ><br /></td></tr>
+
+        <tr>
+            <td></td>
+            <td>@Html.LabelFor(model => model.Firstname, new { @class = "info_lbl" })
+            </td>
+            <td>:</td>
+            <td>
+                @Html.TextBoxFor(model => model.Firstname, new { @class = "info_txt" })
+                @Html.ValidationMessageFor(model => model.Firstname,null, new { @class = "required" })
+            </td>
+            <td></td>
+        </tr>
+
+        <tr></tr>
+        <tr>
+            <td></td>
+                <td >@Html.LabelFor(model => model.Lastname, new { @class = "info_lbl" }) </td>
+                <td>:</td>
+                <td > 
+                     @Html.TextBoxFor(model => model.Lastname, new { @class = "info_txt" })
+                     @Html.ValidationMessageFor(model => model.Lastname, null, new { @class = "required" })
+                </td>
+        </tr>
+
+        <tr></tr>
+        <tr>
+            <td></td>
+            <td>@Html.LabelFor(model => model.Address, new { @class = "info_lbl" }) </td>
+            <td>:</td>
+            <td>
+                @Html.TextBoxFor(model => model.Address, new { @class = "info_txt" })
+                @Html.ValidationMessageFor(model => model.Address)
+            </td>
+        </tr>
+
+        <tr></tr>
+        <tr>
+            <td></td>
+            <td>@Html.LabelFor(model => model.City, new { @class = "info_lbl" })</td>
+            <td>:</td>
+            <td>
+                @Html.TextBoxFor(model => model.City, new { @class = "info_txt" })
+                @Html.ValidationMessageFor(model => model.City)
+            </td>
+        </tr>
+
+
+        <tr></tr>
+        <tr>
+            <td></td>
+            <td>@Html.LabelFor(model => model.State, new { @class = "info_lbl" })</td>
+            <td>
+                :
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.State, new { @class = "info_txt" })
+                @Html.ValidationMessageFor(model => model.State)
+            </td>
+        </tr>
+
+        <tr></tr>
+        <tr>
+            <td>
+            </td>
+            <td>@Html.LabelFor(model => model.Zip, new { @class = "info_lbl" })
+            </td>
+            <td>
+                :
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Zip, new { @class = "info_txt" })
+                @Html.ValidationMessageFor(model => model.Zip)
+            </td>
+        </tr>
+
+        <tr></tr>
+        <tr>
+            <td></td>
+            <td>@Html.LabelFor(model => model.Email, new { @class = "info_lbl" })</td>
+            <td>
+                :
+            </td>
+            <td>
+                @Html.TextBoxFor(model => model.Email, new { @class = "info_txt" })
+                @Html.ValidationMessageFor(model => model.Email, null, new { @class = "required" })
+            </td>
+        </tr>
+
+        <tr></tr>
+        <tr>
+            <td></td>
+            <td>@Html.LabelFor(model => model.Phone, new { @class = "info_lbl" })</td>
+            <td>:</td>
+            <td>
+                @Html.TextBoxFor(model => model.Phone, new { @class = "info_txt" })
+                @Html.ValidationMessageFor(model => model.Phone)
+            </td>
+        </tr>
+
+        <tr></tr>
+
+        
+
+    </table>
+    
+    <br />
+    
+    
+    <table id="interestsTable">
+
+        <tr>
+            <th class="interests_col1"></th>
+            <th class="interests_col2"></th>
+            <th class="interests_col3"></th>
+            <th class="interests_col4"></th>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td colspan="3;" style="font-family: Tahoma; font-size: MEDIUM; color: Green;">
+                Please let us Know atleast one area you would like to get involved:</td>
+        </tr>
+ 
+    <tr>
+        <td></td>
+        <td >1. </td>
+        <td>@Html.LabelFor(Model => Model.Availability, new { @class = "interests_lbl" })</td>
+        <td>
+            @Html.TextAreaFor(Model => Model.Availability, new { @class = "interests_txtArea" })
+            @Html.ValidationMessageFor(Model=>Model.Availability)
+        </td>
+    </tr>
+    <tr></tr>
+
+    <tr>
+        <td></td>
+        <td >2. </td>
+        <td>@Html.LabelFor(Model => Model.Volunteer, new { @class = "interests_lbl" })</td>
+        <td>
+            @Html.TextAreaFor(Model => Model.Volunteer, new { @class = "interests_txtArea" })
+            @Html.ValidationMessageFor(Model=>Model.Volunteer)
+        </td>
+    </tr>
+    <tr></tr>
+
+    <tr>
+        <td></td>
+        <td >3. </td>
+        <td>@Html.LabelFor(Model => Model.Fundraising, new { @class = "interests_lbl" })</td>
+        <td>
+            @Html.TextAreaFor(Model => Model.Fundraising, new { @class = "interests_txtArea" })
+            @Html.ValidationMessageFor(Model=>Model.Fundraising)
+        </td>
+    </tr>
+    <tr></tr>
+
+        <tr>
+        <td></td>
+        <td >4. </td>
+        <td>@Html.LabelFor(Model => Model.Interests, new { @class = "interests_lbl" })</td>
+        <td>
+            @Html.TextAreaFor(Model => Model.Interests, new { @class = "interests_txtArea" })
+            @Html.ValidationMessageFor(Model=>Model.Interests)
+        </td>
+    </tr>
+    <tr><td><br /></td></tr>
+
+    <tr>
+        <td></td>
+        <td colspan=3; style="font-family: Tahoma; font-size: MEDIUM; color: Green;">Any Bitiya Ideas??</td>
+    </tr>
+
+    <tr>
+        <td></td>
+        <td colspan=3 rowspan=5>
+            @Html.TextAreaFor(Model=>Model.Suggestions, new {@class="ideas_txtArea"})
+            @Html.ValidationMessageFor(Model=>Model.Suggestions)
+        </td>
+    </tr>
+
+  </table>
+
+  <br />
+  <div style="width:725px; margin-left:350px;">
+        <button  type="submit" #>SUBMIT</button>
+  </div>
+   
+    
+    
+    <br />
+    
+    <p style="margin-top: 10px; margin-left: 10px;">
+        For more volunteering opportunities and ideas, please contact us at: <a href="mailto:info@bitiya.org?subject=Getting Involved with Bitiya">
+            Bitiya Get Involved Group</a>
+    </p>    
+    
+}
+

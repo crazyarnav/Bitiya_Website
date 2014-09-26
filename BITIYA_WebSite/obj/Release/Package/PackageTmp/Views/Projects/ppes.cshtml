@@ -1,0 +1,110 @@
+﻿@model List<BITIYA_WebSite.Models.WowSliderClass>
+
+@{
+    ViewBag.Title = "ppes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //Foll var's are for populating WowSlider li/img tags
+    int i = 0;
+    string wowstr = "wows1_";
+    string str = wowstr;
+}
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+@*<meta name="keywords" content="WOW Slider, Slideshow Maker HTML, Code For Slideshow In HTML" />
+<meta name="description" content="WOWSlider created with WOW Slider, a free wizard program that helps you easily generate beautiful web slideshow" />
+*@
+<!-- Start WOWSlider.com HEAD section -->
+<link rel="stylesheet" type="text/css" href="../../Wowslider/Projects/PPES/engine1/style.css?v=1.1" />
+<script type="text/javascript" src="../../Wowslider/Projects/PPES/engine1/jquery.js"></script>
+@*<script type="text/javascript" src="~/Scripts/jquery.js"></script>*@
+<!-- End WOWSlider.com HEAD section -->
+
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+<script type="text/javascript" src="~/Scripts/jquery.ui.map.full.min.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        // Also works with: var yourStartLatLng = '59.3426606750, 18.0736160278';
+        var yourStartLatLng1 = new google.maps.LatLng(30.74, 76.8);
+        $('#map_canvas1').gmap({ 'center': yourStartLatLng1 });
+        $('#map_canvas1').gmap('option', 'zoom', 7);
+        $('#map_canvas1').gmap('addMarker', { /*id:'m_1',*/'position': yourStartLatLng1, 'bounds': false });
+
+        var yourStartLatLng2 = new google.maps.LatLng(28.356949, 78.269332);
+        $('#map_canvas2').gmap({ 'center': yourStartLatLng2 });
+        $('#map_canvas2').gmap('option', 'zoom', 7);
+        $('#map_canvas2').gmap('addMarker', { /*id:'m_1',*/'position': yourStartLatLng2, 'bounds': false });
+
+
+    });
+</script>
+
+
+
+<div id="mission">
+    <p>
+        The famous saying by Mahatma Gandhi, “When you educate a girl, you educate a community”
+        has been proven again, by the works of Pardada Pardadi School, (PPES). The entire
+        village of Anoopshahar in Bulandshahr Distict of UP has been amazingly transposed
+        in just a few years. At PPES access to free education alone was insufficient to
+        keep girls in school, the plan included 10 Rupees (equivalent to $0.30 US) per attendance,
+        per girl to be deposited into their personal bank accounts. The learning and earning
+        scheme developed by Mr. Singh, the founder of the school, was put into action. In
+        the morning, girls attend academic classes, such as Math, Science, English, Social
+        Studies, and Creative Arts. In the afternoon, the girls are trained in manufacturing
+        handy crafts and textiles. By the time the students graduate, they not only have
+        basic academic skills but also develop highly marketable vocational job skills.
+        As an added bonus, at graduation they would get approximately $700 us to jump start
+        their lives. What an inspiration to see the impact and amazing power of education
+        in the lives of these girls and their families.
+    </p>
+    <p>
+        <a href="~/Content/Documents/Projects/ppes/Detailed Progress Report.pdf" class="content_nav"
+            target="_blank">Detailed Progress from PPES</a><br />
+        <a href="~/Content/Documents/Projects/ppes/PPES girls Profile.doc" class="content_nav"
+            target="_blank">
+            Profile of the girls</a><br />
+        <a href="~/Content/Documents/Projects/ppes/PPES Progress Report.docx" class="content_nav"
+            target="_blank">
+            2012 Report</a>
+    </p>
+    <div id="map_canvas2" style="width: 625px; height: 150px; float: inherit; margin-left: 130px;
+        border-style: solid; border-width: thin; border-color: black">
+    </div>
+    
+    <br />
+    
+    <!-- Start WOWSlider.com BODY section -->
+	<div id="wowslider-container1">
+	    <div class="ws_images">
+            <ul id ="PPESimages"> 
+                @foreach (var n in Model)
+                {
+                    str = wowstr + i.ToString();
+                    i++;             
+                    <li><img src="@ViewBag.imagePath@n.imageName" alt="@n.imageName" title="" id="@str"/></li>
+                }
+            </ul>
+        </div>
+        <div class="ws_bullets" id="tt_bullets">
+            <div>
+                @i=1;
+                @foreach (var tt in Model)
+                { 
+                    <a href="#" title="@tt.ttName"> <img src="@ViewBag.ttPath@tt.ttName" alt="@tt.ttName">@i</a>
+                    i++;
+                }
+            </div>
+        </div>  
+
+        <a class="wsl" href="http://wowslider.com">Slideshow For HTML by WOWSlider.com v2.5</a>
+	    <div class="ws_shadow">
+        </div>
+	</div>
+	<script type="text/javascript" src="../../Wowslider/Projects/BVK/engine1/wowslider.js"></script>
+	<script type="text/javascript" src="../../Wowslider/Projects/BVK/engine1/script.js"></script>
+	<!-- End WOWSlider.com BODY section -->
+
+</div>
